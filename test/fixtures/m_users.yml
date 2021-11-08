@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  login_user_id: MyString
+  bigint: MyString
+  name: MyString
+  string: MyString
+  email: MyString
+  string: MyString
+  password: MyString
+  string: MyString
+  kb_be_in_change: MyString
+  int: MyString
+  del_flg: MyString
+  int: MyString
+  created_at: MyString
+  timestamp: MyString
+  updated_at: MyString
+  timestamp: MyString
+
+two:
+  login_user_id: MyString
+  bigint: MyString
+  name: MyString
+  string: MyString
+  email: MyString
+  string: MyString
+  password: MyString
+  string: MyString
+  kb_be_in_change: MyString
+  int: MyString
+  del_flg: MyString
+  int: MyString
+  created_at: MyString
+  timestamp: MyString
+  updated_at: MyString
+  timestamp: MyString

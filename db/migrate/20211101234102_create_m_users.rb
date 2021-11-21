@@ -3,7 +3,6 @@ class CreateMUsers < ActiveRecord::Migration[6.1]
         create_table :m_users do |t|
             t.string :name
             t.string :email
-            t.string :password
             t.string :password_digest
             t.string :kb_be_in_change
             t.integer :del_flg

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_161048) do
+ActiveRecord::Schema.define(version: 2021_11_01_234102) do
 
-  create_table "m_users", charset: "latin1", force: :cascade do |t|
+  create_table "m_users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"

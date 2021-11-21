@@ -45,3 +45,6 @@ group :development, :test do
   gem 'rspec-queue'
   gem "factory_bot_rails"
 end
+
+gem 'rack-cors'
+gem 'jwt'

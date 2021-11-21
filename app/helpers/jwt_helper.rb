@@ -1,0 +1,55 @@
+module JwtHelper
+    require 'jwt'
+    ALGORITHM_KEY = 'RS256'
+    PEM = <<-'PEM'
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEAx2t7ewmWpzJCTlZfr72HBIisqNG1+k1UCCmu6zclD9EhnPMa
+I5WjgS8OODxD9bp5xAgV4Pdvxbcv201/HS+CTpd4gbh9LTf4XJkKGW5Otu4exx40
+Wbv/OIrbX2Ea70JJH38Zu4+BeXN3AYaLr2CA02Cxhy93TRGcrTltIv29YRPEti+H
+8sPbHnQshqe/a7Fp/1dEROzgorMSTBBszON6XkdxLJB+azY6uM2x+44e6+CZynJJ
+nzG6oTTUSCcNihODqYHbGmu+zhyzdomLeGJ5lXlh/zBw7sBUU6JifAxem2xGUzTy
+1w6kz2HBRyIyLQzFYkAmd9JfOHGFOeh4+neLKQIDAQABAoIBAQC01YWa094WbZ/s
+86w/a+lUti+Dwu93M8ogwNPKni3wgt8tONGaNSaYjbgiTJv/54JlvkNAxoBH1U8D
+WeoL6DoM1JRFZau1ZozEQ08CMqIUhifIvl4QhUbx2hEGE8Nd9Ujj09jc2Uw6evcO
+nhhrB2Kqy4MQqH1RmMfv2SRbV6b0sGIAcfmhMS9+5sAofZMC3WbIb9/IBG6L+TW2
+HoAEqhsWIrm1X5fE9Q2dK6Bnl3o7kHW0Y4GcyGW4zCsW7EGB+Tdi/AdWyAk/weFK
+oQfpsM2ozMiflMNCb3TPp56etfnB+kNQJ3b6DF9ARBq/MHb+WuNG60NSOiptnclv
+jpHF/KdVAoGBAPcuwqtKkuPg443969qxziHvUJUs8PtHl3am+feeB4rjH8T+qVRO
+wMZ0mZEQOXYFNErgvHe8mjm9jixb0nY/NtxFRHD4abbnPjOuZtkYom1skLYMgMrP
+ImGeIcx2Bf4zoEmovJsSZcrajsGmDfD50w8lq+AsNI2DbX62WVnB0FGzAoGBAM6I
+junm/23UfLEYRDG+xnXgEgVSE3/dmu00aDHtRA1+7eYd7uVpA+xc8QV4S4zBL1Dl
+JcNXWdZOFufNE61O0mVR3a4CbUY2ie03OXOqDv4Ua3NQSAUr03yoNP1c50/gjavM
++bSl1RtlRRY/Wsdn86QGUUxMUzzg2pb+5WCMhGmzAoGBAO5hLyYIZj7T7EBMqH+h
+SB0b8Yfb7o83DNBF2f2+bqG3xjSyL9T5mhoJ6uumTPQPss2fjMKgpc+XihwndYHK
+Fvs45fdY6oKU4jzvLYqiokqLD8gxqKduOUcRPKE1FTSAz00aKMIYbQjD3DbPENTb
+6XrLJsWrfAcZv6ga7XKNYnzXAoGAVGkJh91qLdg3ciXJ0U74S7rdgqEt6QeIR0Qx
+BZ7EPoPO9UrslYRbHyJJO4QT1J4sGXLeAT1VMTpPMEPns+BQKyrPYEwLnzOxIWt9
+pqEtaXitBb8dAEgOMpeIuLhcrY/INxwaPlO8imrUVqhkELWSpUoTtgxHxMzdafMZ
+imFDyPMCgYEAyUob0AawVEMD1YtLLtGYk/IH6V9yYJs0HXt+6FDXIzhwU2saouOy
+Jun3N/EsHQ7hYbP+tCXcW6AOK3t7eK+/THyuNHKZNCUiPkpZHwaGq40MuoSLCeMk
+/Orn3c5lIrxug9oTEvu+2JxXlAzpRL//Ox5KTzOa9QcuhLswgcj+bsg=
+-----END RSA PRIVATE KEY-----
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApFm4YoiieE320lUWibo9
+UoXi4ztRPbsFiB2A64LnemegFDAyy63ZcjAJn0iHLTzeKrhs87IqP3L6hm5GVRUo
+oLL/YXv/KHTOQ2oZpg5z4FFKzmNEtjs6PI0SA7pUqB6IEof/ghHWvtwDz5ocT4Zh
+B3baRDbzrXyqgVdJ8bi+Op4pMfxJoLmn2f1l1/mMnfBWBaepLqSgX9xVG/KOWi7+
+CrAoriytIbirRGcnE0AaZ+V4P9e8ujoEIONgFbhJ2OlV/yLPo8FQ3+N3GpZudVN6
+3JbJIozgV8Rr/6aGNyIFSCQ1dwSpo0AsWsW3+cwrHnSNCIAU2zuuS8No3sfU9mBb
+pQIDAQAB
+-----END PUBLIC KEY-----
+    PEM
+
+    def get_rsa_private
+        return OpenSSL::PKey::RSA.new(PEM)
+    end
+
+    def get_token(payload, rsa_private)
+        return JWT.encode payload, rsa_private, ALGORITHM_KEY
+    end
+
+    def decode(token, rsa_private)
+        return JWT.decode token, rsa_private, true, { algorithm: ALGORITHM_KEY }
+    end
+
+end

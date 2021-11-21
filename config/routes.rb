@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
-    get 'login' => 'login#login'
+
+    get 'sign_in' => 'sign_in#sign_in'
 
 end

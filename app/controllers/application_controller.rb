@@ -31,7 +31,7 @@ class ApplicationController < ActionController::API
     # レスポンス返却（500 Conflict）
     # @param [object] res レスポンス
     # return レスポンス
-    def response_internal_server_error
+    def response_internal_server_error(res)
         render status: 500, json: res
     end
 end

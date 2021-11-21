@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_01_234102) do
+ActiveRecord::Schema.define(version: 2021_11_21_142544) do
 
   create_table "m_users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.string "kb_be_in_change"
     t.integer "del_flg"
     t.datetime "created_at"

@@ -14,7 +14,7 @@ module JwtHelper
     # @param [object] rsa_private 秘密鍵 
     # return トークン
     def get_token(payload, rsa_private)
-        return JWT.encode payload, rsa_private, ALGORITHM_KEY
+        return JWT.encode(payload, rsa_private, ALGORITHM_KEY)
     end
 
     # デコードを行う
@@ -22,7 +22,7 @@ module JwtHelper
     # @param [object] rsa_private 秘密鍵 
     # return デコードした結果
     def decode(token, rsa_private)
-        return JWT.decode token, rsa_private, true, { algorithm: ALGORITHM_KEY }
+        return JWT.decode(token, rsa_private, true, { algorithm: ALGORITHM_KEY })
     end
 
 end

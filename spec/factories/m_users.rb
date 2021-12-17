@@ -1,11 +1,10 @@
 FactoryBot.define do
     factory :m_user do
-        sequence(:name) { |n| "hoge#{n}" }
-        sequence(:email) { |n| "hoge#{n}@example.com" }
-        password { 'password' }
+        sequence(:user_id) { |n| "#{n}" }
+        sequence(:name) { |n| "test#{n}" }
+        sequence(:email) { |n| "test#{n}@example.com" }
+        password { 'test' }
         kb_be_in_change { 0 }
-        del_flg { "0" }
-        created_at { Date.today }
-        updated_at { Date.today }
+        del_flg { 0 }
     end
 end

@@ -40,15 +40,15 @@ module BuymaListingAppApi
 
     config.generators do |g|
       g.test_framework :rspec,
-          view_specs: false,
-          helper_specs: false,
-          routing_specs: false,
-          request_specs: false
+          view_specs: false
+          #helper_specs: false,
+          #routing_specs: false
+          #request_specs: false
     end
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-          origins "http://localhost:3000"
+          origins "http://localhost:3001"
           resource "*",
           headers: :any,
           methods: [:get, :post, :patch, :delete, :options, :head]

@@ -1,0 +1,2 @@
+class MInventory < ApplicationRecord
+end
